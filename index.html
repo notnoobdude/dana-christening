@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christening of Daña Rose</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink-dark: #c4788a;
+      --pink: #e8a0b4;
+      --pink-light: #f5d0dc;
+      --pink-pale: #fdf0f4;
+      --white: #ffffff;
+      --cream: #fefbf9;
+      --text: #5a3d47;
+      --text-light: #8a6b75;
+      --gold: #c9a96e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* Floating rose petals animation */
+    .petal {
+      position: fixed;
+      width: 15px;
+      height: 15px;
+      background: var(--pink-light);
+      border-radius: 50% 0 50% 50%;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 0;
+      animation: fall linear infinite;
+    }
+
+    .petal:nth-child(odd) {
+      background: var(--pink);
+    }
+
+    .petal:nth-child(3n) {
+      background: rgba(255, 255, 255, 0.7);
+      width: 12px;
+      height: 12px;
+    }
+
+    @keyframes fall {
+      0% {
+        opacity: 0;
+        transform: translateX(0) rotate(0deg) scale(0.5);
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.4;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(150px) rotate(720deg) scale(0.2);
+        top: 100vh;
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 15px 0;
+      transition: background 0.3s ease;
+      background: rgba(254, 251, 249, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(232, 160, 180, 0.2);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--pink-dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(180deg, var(--pink-pale) 0%, var(--cream) 100%);
+      padding: 40px 20px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(232, 160, 180, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(232, 160, 180, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--white);
+      box-shadow: 0 10px 30px rgba(196, 120, 138, 0.3);
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cross-icon {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--pink-dark);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-date {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      color: var(--text-light);
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .rose-divider {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 25px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .rose-divider .line {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--pink), transparent);
+    }
+
+    .rose-divider .rose {
+      font-size: 1.4rem;
+      color: var(--pink);
+    }
+
+    .hero-verse {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 500px;
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      margin-top: 35px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .countdown-item {
+      text-align: center;
+    }
+
+    .countdown-item .number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--pink-dark);
+      line-height: 1;
+      display: block;
+      min-width: 60px;
+    }
+
+    .countdown-item .label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 5px;
+      display: block;
+    }
+
+    .countdown-separator {
+      font-size: 2rem;
+      color: var(--pink-light);
+      align-self: flex-start;
+      padding-top: 5px;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px;
+      animation: bounce 2s infinite;
+      color: var(--pink);
+      font-size: 1.5rem;
+      z-index: 1;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* Section Styles */
+    section {
+      padding: 80px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: var(--pink-dark);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* Details Section */
+    .details {
+      background: var(--white);
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .detail-card {
+      text-align: center;
+      padding: 40px 30px;
+      border: 1px solid var(--pink-light);
+      border-radius: 20px;
+      background: var(--cream);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(196, 120, 138, 0.15);
+    }
+
+    .detail-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .detail-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--pink-dark);
+      margin-bottom: 15px;
+    }
+
+    .detail-card .time {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .detail-card .place {
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .detail-card .address {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .map-link {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+      border-radius: 50px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .detail-card:hover .map-link {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(196, 120, 138, 0.4);
+    }
+
+    .note-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--white);
+      box-shadow: 0 10px 30px rgba(196, 120, 138, 0.2);
+      margin-bottom: 30px;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      background: var(--pink-pale);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 3px solid var(--white);
+      box-shadow: 0 5px 15px rgba(196, 120, 138, 0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 30px rgba(196, 120, 138, 0.3);
+    }
+
+    /* Godparents Section */
+    .godparents {
+      background: var(--pink-pale);
+    }
+
+    .godparents-group {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .godparents-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .godparents-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--pink-dark);
+      margin-bottom: 25px;
+    }
+
+    .godparents-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .godparent-name {
+      display: inline-block;
+      padding: 10px 22px;
+      background: var(--white);
+      border: 1px solid var(--pink-light);
+      border-radius: 50px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+
+    .godparent-name:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(196, 120, 138, 0.15);
+      background: var(--pink-light);
+    }
+
+    .godparents-note {
+      max-width: 600px;
+      margin: 35px auto 0;
+      text-align: center;
+      padding: 18px 25px;
+      background: var(--white);
+      border: 1px solid var(--pink-light);
+      border-radius: 12px;
+    }
+
+    /* Safety Protocols Section */
+    .safety {
+      background: var(--white);
+    }
+
+    .safety-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .safety-item {
+      text-align: center;
+      padding: 30px 25px;
+      background: var(--cream);
+      border: 1px solid var(--pink-light);
+      border-radius: 16px;
+      flex: 1;
+      min-width: 180px;
+      max-width: 220px;
+      transition: transform 0.3s;
+    }
+
+    .safety-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .safety-icon {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .safety-item p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      color: var(--text);
+    }
+
+    .godparents-note p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .godparents-note strong {
+      font-weight: 500;
+      color: var(--pink-dark);
+    }
+
+    /* Message Section */
+    .message {
+      background: linear-gradient(180deg, var(--cream) 0%, var(--pink-pale) 50%, var(--cream) 100%);
+      text-align: center;
+    }
+
+    .message-content {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .message-content p {
+      font-size: 1.25rem;
+      line-height: 2;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .message-content .parents {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      color: var(--pink-dark);
+      margin-top: 30px;
+    }
+
+    /* RSVP Section */
+    .rsvp {
+      background: var(--white);
+    }
+
+    .rsvp-container {
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    .rsvp-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      padding: 12px 18px;
+      border: 1px solid var(--pink-light);
+      border-radius: 10px;
+      background: var(--cream);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px rgba(232, 160, 180, 0.2);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .attendance-options {
+      display: flex;
+      gap: 15px;
+    }
+
+    .attendance-option {
+      flex: 1;
+    }
+
+    .attendance-option input[type="radio"] {
+      display: none;
+    }
+
+    .attendance-option label {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border: 2px solid var(--pink-light);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      color: var(--text-light);
+    }
+
+    .attendance-option input[type="radio"]:checked + label {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: var(--white);
+    }
+
+    .attendance-option label:hover {
+      border-color: var(--pink);
+    }
+
+    .submit-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(196, 120, 138, 0.4);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .form-success.show {
+      display: block;
+    }
+
+    .form-success .checkmark {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .form-success h3 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: var(--pink-dark);
+      margin-bottom: 10px;
+    }
+
+    .form-success p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--pink-pale);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer .footer-rose {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--text-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 10px;
+      }
+
+      nav a {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+      }
+
+      .hero-photo {
+        width: 140px;
+        height: 140px;
+      }
+
+      .note-photo {
+        width: 170px;
+        height: 170px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .attendance-options {
+        flex-direction: column;
+      }
+
+      section {
+        padding: 60px 15px;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .detail-card {
+        padding: 30px 20px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .gallery-grid img {
+        height: 180px;
+      }
+
+      .godparent-name {
+        padding: 8px 16px;
+        font-size: 0.95rem;
+      }
+
+      .safety-grid {
+        gap: 15px;
+      }
+
+      .safety-item {
+        min-width: 140px;
+        padding: 20px 15px;
+      }
+
+      .countdown {
+        gap: 15px;
+      }
+
+      .countdown-item .number {
+        font-size: 2rem;
+        min-width: 45px;
+      }
+
+      .section-title h2 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Petals -->
+  <div id="petals-container"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#message">Message</a></li>
+      <li><a href="#godparents">Godparents</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <img src="images/1.JPG" alt="Daña Rose" class="hero-photo" decoding="async">
+    <div class="cross-icon">&#10013;</div>
+    <p class="hero-subtitle">The Holy Baptism of</p>
+    <h1 class="hero-name">Daña Rose</h1>
+    <p class="hero-date">April 11, 2026 &bull; Saturday</p>
+    <div class="rose-divider">
+      <span class="line"></span>
+      <span class="rose">&#x1F339;</span>
+      <span class="line"></span>
+    </div>
+    <p class="hero-verse">
+      &ldquo;For this child I prayed, and the Lord has granted<br>
+      me my petition that I made to Him.&rdquo;<br>
+      <span style="font-size: 0.9rem; color: var(--pink-dark);">&mdash; 1 Samuel 1:27</span>
+    </p>
+    <div class="countdown" id="countdown">
+      <div class="countdown-item">
+        <span class="number" id="cd-days">--</span>
+        <span class="label">Days</span>
+      </div>
+      <span class="countdown-separator">:</span>
+      <div class="countdown-item">
+        <span class="number" id="cd-hours">--</span>
+        <span class="label">Hours</span>
+      </div>
+      <span class="countdown-separator">:</span>
+      <div class="countdown-item">
+        <span class="number" id="cd-minutes">--</span>
+        <span class="label">Minutes</span>
+      </div>
+      <span class="countdown-separator">:</span>
+      <div class="countdown-item">
+        <span class="number" id="cd-seconds">--</span>
+        <span class="label">Seconds</span>
+      </div>
+    </div>
+    <a href="#details" class="scroll-hint">&#8964;</a>
+  </section>
+
+  <!-- Details -->
+  <section class="details" id="details">
+    <div class="section-title">
+      <h2>Celebration Details</h2>
+      <p>Join us as we celebrate this blessed day</p>
+    </div>
+    <div class="details-grid">
+      <a href="https://maps.app.goo.gl/ZuBniw7USsNhrvaj7" target="_blank" rel="noopener" class="detail-card" style="text-decoration: none; color: inherit;">
+        <div class="detail-icon">&#9963;</div>
+        <h3>Church Ceremony</h3>
+        <p class="time">10:00 AM</p>
+        <p class="place">St. Jude Thaddeus Parish</p>
+        <p class="address">Holy Mass &amp; Baptismal Rites</p>
+        <span class="map-link">&#x1F4CD; Tap to view map</span>
+      </a>
+      <a href="https://maps.app.goo.gl/hxdCg5AxBeyJaSRy8" target="_blank" rel="noopener" class="detail-card" style="text-decoration: none; color: inherit;">
+        <div class="detail-icon">&#127881;</div>
+        <h3>Reception</h3>
+        <p class="time">11:00 AM</p>
+        <p class="place">PBB FarmHouse</p>
+        <p class="address">Lunch &amp; Celebration</p>
+        <span class="map-link">&#x1F4CD; Tap to view map</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Message -->
+  <section class="message" id="message">
+    <div class="section-title">
+      <h2>A Little Note</h2>
+      <p>For our beloved guests</p>
+    </div>
+    <div class="message-content">
+      <img src="images/2.JPG" alt="Daña Rose" class="note-photo" loading="lazy" decoding="async">
+      <p>
+        We are truly blessed and grateful to God for the precious gift
+        of our little Daña Rose. As she receives the Sacrament of Baptism,
+        we invite you to witness and share in this joyful occasion.
+      </p>
+      <p>
+        Your presence and prayers would mean the world to us
+        as we welcome her into our Christian family.
+      </p>
+      <div class="rose-divider" style="justify-content: center;">
+        <span class="line"></span>
+        <span class="rose">&#x1F339;</span>
+        <span class="line"></span>
+      </div>
+      <p class="parents">With love and gratitude</p>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="section-title">
+      <h2>Our Little Rose</h2>
+      <p>Precious moments</p>
+    </div>
+    <div class="gallery-grid">
+      <img src="images/OM6A8531.JPG" alt="Daña Rose" loading="lazy">
+      <img src="images/OM6A8600.JPG" alt="Daña Rose" loading="lazy">
+      <img src="images/OM6A8707.JPG" alt="Daña Rose" loading="lazy">
+      <img src="images/OM6A8732.JPG" alt="Daña Rose" loading="lazy">
+      <img src="images/1.JPG" alt="Daña Rose" loading="lazy">
+      <img src="images/de00a768-f208-4165-b5a2-7c2c192266a6.jpg" alt="Daña Rose" loading="lazy">
+      <img src="images/b412ceda-cbf2-4d21-bc01-f7be21919fad.jpg" alt="Daña Rose" loading="lazy">
+      <img src="images/949d6d03-319b-4c0e-981e-9537036d38df.jpg" alt="Daña Rose" loading="lazy">
+      <img src="images/c7c9990d-a681-4683-ba96-a5701b32cc94.jpg" alt="Daña Rose" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Godparents -->
+  <section class="godparents" id="godparents">
+    <div class="section-title">
+      <h2>Godparents</h2>
+      <p>Chosen with love to guide her faith</p>
+    </div>
+
+    <div class="godparents-group">
+      <h3 class="godparents-label">Godmothers</h3>
+      <div class="godparents-list">
+        <span class="godparent-name">Tita Lei Anrei de Leon</span>
+        <span class="godparent-name">Tita Celieane Visco-Sorrera</span>
+        <span class="godparent-name">Tita Jhasper Arreola</span>
+        <span class="godparent-name">Tita Deanne Lamban</span>
+        <span class="godparent-name">Tita Marian Bragat</span>
+        <span class="godparent-name">Tita Jernie Porras</span>
+        <span class="godparent-name">Tita Venus Valenzona</span>
+        <span class="godparent-name">Tita Danielle Echeveria</span>
+        <span class="godparent-name">Tita Marychelle Enlayo</span>
+        <span class="godparent-name">Tita Jasel Ando-Teves</span>
+        <span class="godparent-name">Tita Lyn Competente</span>
+        <span class="godparent-name">Tita Dr. Angelica Louise Bandolon</span>
+        <span class="godparent-name">Tita Dr. Ni&ntilde;a Tonzo</span>
+        <span class="godparent-name">Tita Khissey Mae Wisco</span>
+        <span class="godparent-name">Tita Gwen Dianne Gil-Cesar</span>
+        <span class="godparent-name">Tita Kelly Daabay</span>
+        <span class="godparent-name">Tita Nathalie Kate</span>
+        <span class="godparent-name">Tita Atty. Kristine Bermudo</span>
+      </div>
+    </div>
+
+    <div class="godparents-group">
+      <h3 class="godparents-label">Godfathers</h3>
+      <div class="godparents-list">
+        <span class="godparent-name">Tito Miguel Andrey Piatos</span>
+        <span class="godparent-name">Tito Rich John Mark Camellon</span>
+        <span class="godparent-name">Tito Robert Fusin</span>
+        <span class="godparent-name">Tito Dr. Alvin Arreola</span>
+        <span class="godparent-name">Tito Adrian Potestas</span>
+        <span class="godparent-name">Tito David Rasonabe</span>
+        <span class="godparent-name">Tito Robert Lemu</span>
+        <span class="godparent-name">Tito Raymund Sarmiento</span>
+        <span class="godparent-name">Tito Jhon Badilles</span>
+        <span class="godparent-name">Tito Stephen Pe&ntilde;a</span>
+        <span class="godparent-name">Tito JM Cruspero</span>
+        <span class="godparent-name">Tito Darryl Dan Atanoso</span>
+      </div>
+    </div>
+
+    <div class="godparents-note">
+      <p><strong>To all Godparents:</strong> Please be at the Church earlier than the given time and please wear white.</p>
+    </div>
+  </section>
+
+  <!-- Safety Protocols -->
+  <section class="safety" id="safety">
+    <div class="section-title">
+      <h2>Safety Protocols</h2>
+      <p>Help us keep baby Anya safe</p>
+    </div>
+    <div class="safety-grid">
+      <div class="safety-item">
+        <span class="safety-icon">&#128683;</span>
+        <p>No Kissing Anya</p>
+      </div>
+      <div class="safety-item">
+        <span class="safety-icon">&#128685;</span>
+        <p>No Smoking Nearby</p>
+      </div>
+      <div class="safety-item">
+        <span class="safety-icon">&#129532;</span>
+        <p>Sanitize Your Hands</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp" id="rsvp">
+    <div class="section-title">
+      <h2>Kindly Respond</h2>
+      <p>We would love to know if you can make it</p>
+    </div>
+    <div class="rsvp-container">
+      <form class="rsvp-form" id="rsvpForm" action="https://formspree.io/f/xkovvqag" method="POST">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Will you be attending?</label>
+          <div class="attendance-options">
+            <div class="attendance-option">
+              <input type="radio" id="attending-yes" name="attendance" value="yes" required>
+              <label for="attending-yes">Joyfully Accept</label>
+            </div>
+            <div class="attendance-option">
+              <input type="radio" id="attending-no" name="attendance" value="no">
+              <label for="attending-no">Regretfully Decline</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="guests">Number of Guests (including yourself)</label>
+          <select id="guests" name="guests">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5+</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message-input">Message for Daña Rose (Optional)</label>
+          <textarea id="message-input" name="message" placeholder="Write a sweet message or blessing for the little one..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send RSVP</button>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="checkmark">&#x1F339;</div>
+        <h3>Thank You!</h3>
+        <p>Your RSVP has been received. We look forward to celebrating with you!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-rose">&#x1F339;</div>
+    <p>The Christening of Daña Rose &bull; April 11, 2026</p>
+  </footer>
+
+  <script>
+    // Create falling petals
+    function createPetals() {
+      const container = document.getElementById('petals-container');
+      const petalCount = 15;
+
+      for (let i = 0; i < petalCount; i++) {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.top = -20 + 'px';
+        petal.style.animationDuration = (Math.random() * 8 + 8) + 's';
+        petal.style.animationDelay = (Math.random() * 15) + 's';
+        petal.style.width = (Math.random() * 10 + 8) + 'px';
+        petal.style.height = (Math.random() * 10 + 8) + 'px';
+        container.appendChild(petal);
+      }
+    }
+
+    createPetals();
+
+    // Countdown to April 11, 2026, 10:00 AM
+    function updateCountdown() {
+      const target = new Date('2026-04-11T10:00:00').getTime();
+      const now = Date.now();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML =
+          '<p style="font-family: Great Vibes, cursive; font-size: 2rem; color: var(--pink-dark);">Today is the blessed day!</p>';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // RSVP form handling via Formspree
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const form = this;
+      const data = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('formSuccess').classList.add('show');
+          form.reset();
+        } else {
+          alert('Oops! Something went wrong. Please try again.');
+        }
+      }).catch(() => {
+        alert('Oops! Something went wrong. Please try again.');
+      });
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

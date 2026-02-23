@@ -129,6 +129,27 @@
       color: var(--pink-dark);
     }
 
+    /* Hamburger button — hidden on desktop */
+    #nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 20px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: var(--pink-dark);
+      line-height: 1;
+    }
+
+    /* Brand label — hidden on desktop, shown on mobile */
+    #nav-brand {
+      display: none;
+    }
+
     /* Hero Section */
     .hero {
       min-height: 100vh;
@@ -138,6 +159,7 @@
       justify-content: center;
       text-align: center;
       position: relative;
+      overflow: hidden;
       background: linear-gradient(180deg, var(--pink-pale) 0%, var(--cream) 100%);
       padding: 40px 20px;
     }
@@ -798,6 +820,8 @@
     footer .footer-rose {
       font-size: 1.5rem;
       margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
     }
 
     footer p {
@@ -806,6 +830,8 @@
       font-size: 0.75rem;
       letter-spacing: 2px;
       color: var(--text-light);
+      position: relative;
+      z-index: 2;
     }
 
     /* Gift Ideas Section */
@@ -890,6 +916,13 @@
       transform: scaleX(-1);
     }
 
+    .section-rose-bl {
+      width: 200px;
+      bottom: 10px;
+      left: -20px;
+      opacity: 0.7;
+    }
+
     .footer-rose-left {
       width: 120px;
       bottom: 0;
@@ -907,18 +940,100 @@
       transform: scaleX(-1);
     }
 
+    /* Music Toggle Button */
+    #music-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(196, 120, 138, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      color: var(--white);
+      font-size: 1.3rem;
+    }
+
+    #music-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(196, 120, 138, 0.55);
+    }
+
+    #music-btn.muted {
+      background: linear-gradient(135deg, #ccc 0%, #aaa 100%);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+    }
+
     /* Responsive */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      /* Hamburger nav */
+      nav {
+        padding: 14px 0;
+        position: relative; /* needed for absolute toggle btn */
+      }
+
+      #nav-toggle {
+        display: block;
+      }
+
       nav ul {
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0 10px;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 10px 0 16px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(254, 251, 249, 0.97);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(232, 160, 180, 0.2);
+        box-shadow: 0 8px 20px rgba(196, 120, 138, 0.1);
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+
+      nav ul li {
+        width: 100%;
+        text-align: center;
       }
 
       nav a {
-        font-size: 0.65rem;
-        letter-spacing: 1px;
+        display: block;
+        padding: 12px 0;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        border-bottom: 1px solid rgba(232, 160, 180, 0.1);
+      }
+
+      nav ul li:last-child a {
+        border-bottom: none;
+      }
+
+      /* Nav brand label */
+      #nav-brand {
+        display: block;
+        text-align: center;
+        font-family: 'Great Vibes', cursive;
+        font-size: 1.4rem;
+        color: var(--pink-dark);
+        padding: 0 20px;
+        pointer-events: none;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 90px 20px 60px;
       }
 
       .hero-photo {
@@ -926,23 +1041,45 @@
         height: 140px;
       }
 
-      .note-photo {
-        width: 170px;
-        height: 170px;
+      .hero-frame-rose {
+        width: 180px;
+        margin-top: -65px;
       }
 
-      .form-row {
-        grid-template-columns: 1fr;
+      .hero-verse br {
+        display: none;
       }
 
-      .attendance-options {
-        flex-direction: column;
+      .hero-verse {
+        font-size: 1rem;
       }
 
+      /* Countdown */
+      .countdown {
+        gap: 10px;
+        padding: 14px 18px;
+      }
+
+      .countdown-item .number {
+        font-size: 1.8rem;
+        min-width: 38px;
+      }
+
+      .countdown-separator {
+        font-size: 1.6rem;
+      }
+
+      /* Section titles */
+      .section-title h2 {
+        font-size: 2.2rem;
+      }
+
+      /* Sections general */
       section {
         padding: 60px 15px;
       }
 
+      /* Details */
       .details-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -952,56 +1089,88 @@
         padding: 30px 20px;
       }
 
+      /* Note photo */
+      .note-photo {
+        width: 170px;
+        height: 170px;
+      }
+
+      /* Gallery */
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
       }
 
       .gallery-grid img {
-        height: 180px;
+        height: 160px;
       }
 
+      /* Gifts */
+      .gifts-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      /* Godparents */
       .godparent-name {
-        padding: 8px 16px;
-        font-size: 0.95rem;
+        padding: 8px 14px;
+        font-size: 0.9rem;
       }
 
+      /* Safety */
       .safety-grid {
-        gap: 15px;
+        gap: 12px;
       }
 
       .safety-item {
-        min-width: 140px;
-        padding: 20px 15px;
+        min-width: 120px;
+        padding: 18px 12px;
       }
 
-      .countdown {
-        gap: 15px;
+      /* RSVP form */
+      .form-row {
+        grid-template-columns: 1fr;
       }
 
-      .countdown-item .number {
-        font-size: 2rem;
-        min-width: 45px;
+      .attendance-options {
+        flex-direction: column;
       }
 
-      .section-title h2 {
-        font-size: 2.2rem;
-      }
-
+      /* Rose decorations */
       .hero-rose-left,
       .hero-rose-right {
-        width: 160px;
+        width: 140px;
         bottom: 10px;
       }
 
       .section-rose-tl,
-      .section-rose-br {
+      .section-rose-br,
+      .section-rose-bl {
         display: none;
       }
 
       .footer-rose-left,
       .footer-rose-right {
-        width: 100px;
+        width: 90px;
+      }
+
+      footer {
+        padding: 40px 110px;
+      }
+
+      footer p {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+        color: var(--text);
+      }
+
+      /* Music button */
+      #music-btn {
+        bottom: 18px;
+        right: 18px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -1013,7 +1182,9 @@
 
   <!-- Navigation -->
   <nav>
-    <ul>
+    <span id="nav-brand">Daña Rose</span>
+    <button id="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    <ul id="nav-menu">
       <li><a href="#home">Home</a></li>
       <li><a href="#details">Details</a></li>
       <li><a href="#message">Message</a></li>
@@ -1097,6 +1268,7 @@
 
   <!-- Message -->
   <section class="message" id="message" style="position: relative; overflow: hidden;">
+    <img src="images/roses.webp" class="rose-deco section-rose-bl" alt="" aria-hidden="true">
     <img src="images/roses.webp" class="rose-deco section-rose-br" alt="" aria-hidden="true">
     <div class="section-title">
       <h2>A Little Note</h2>
@@ -1338,7 +1510,58 @@
     <p>The Christening of Daña Rose &bull; April 11, 2026</p>
   </footer>
 
+  <!-- Background Music -->
+  <audio id="bg-music" preload="auto">
+    <source src="music/favoritesongnianya.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Music Toggle Button -->
+  <button id="music-btn" title="Toggle music" aria-label="Toggle background music">
+    ♪
+  </button>
+
   <script>
+    // Background music — autoplay on load, button only mutes/unmutes
+    (function () {
+      const audio = document.getElementById('bg-music');
+      const btn = document.getElementById('music-btn');
+      const START_TIME = 33;
+
+      function startMusic() {
+        audio.currentTime = START_TIME;
+        audio.play().catch(() => {});
+      }
+
+      // Loop back to 0:33 when track ends
+      audio.addEventListener('ended', function () {
+        audio.currentTime = START_TIME;
+        audio.play().catch(() => {});
+      });
+
+      // Attempt autoplay immediately
+      audio.addEventListener('canplay', function onReady() {
+        audio.removeEventListener('canplay', onReady);
+        startMusic();
+      });
+
+      // Fallback: start on first user interaction if autoplay was blocked
+      function onFirstInteraction() {
+        startMusic();
+        document.removeEventListener('click', onFirstInteraction);
+        document.removeEventListener('touchstart', onFirstInteraction);
+      }
+      document.addEventListener('click', onFirstInteraction);
+      document.addEventListener('touchstart', onFirstInteraction);
+
+      // Button only toggles mute
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        audio.muted = !audio.muted;
+        btn.classList.toggle('muted', audio.muted);
+        btn.title = audio.muted ? 'Unmute music' : 'Mute music';
+      });
+    })();
+
     // Create falling petals
     function createPetals() {
       const container = document.getElementById('petals-container');
@@ -1409,15 +1632,27 @@
       });
     });
 
-    // Smooth scroll for nav links
+    // Smooth scroll for nav links + close menu on mobile
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
+        // Close hamburger menu
+        document.getElementById('nav-menu').classList.remove('open');
+        document.getElementById('nav-toggle').setAttribute('aria-expanded', 'false');
+        document.getElementById('nav-toggle').textContent = '☰';
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
           target.scrollIntoView({ behavior: 'smooth' });
         }
       });
+    });
+
+    // Hamburger toggle
+    document.getElementById('nav-toggle').addEventListener('click', function () {
+      const menu = document.getElementById('nav-menu');
+      const open = menu.classList.toggle('open');
+      this.setAttribute('aria-expanded', open);
+      this.textContent = open ? '✕' : '☰';
     });
   </script>
 </body>

@@ -637,6 +637,22 @@
       color: var(--pink-dark);
     }
 
+    .color-swatches {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .color-swatches span {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+
     /* Message Section */
     .message {
       background: linear-gradient(180deg, var(--cream) 0%, var(--pink-pale) 50%, var(--cream) 100%);
@@ -1432,6 +1448,16 @@
 
     <div class="godparents-note">
       <p><strong>To all Godparents:</strong> Please be at the Church earlier than the given time and please wear white.</p>
+    </div>
+    <div class="godparents-note" style="margin-top: 15px;">
+      <p><strong>To all Guests:</strong> Please wear attire in the event's color palette — soft pastels are encouraged.</p>
+      <div class="color-swatches">
+        <span style="background: #A3D9CE;" title="Mint"></span>
+        <span style="background: #CEEDB5;" title="Sage Green"></span>
+        <span style="background: #F9D5B5;" title="Peach"></span>
+        <span style="background: #F5A99A;" title="Blush Pink"></span>
+        <span style="background: #FF7B7B;" title="Coral"></span>
+      </div>
     </div>
   </section>
 

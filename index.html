@@ -1105,6 +1105,12 @@
         height: 160px;
       }
 
+      .gallery-grid .gallery-last {
+        grid-column: 1 / -1;
+        width: calc(50% - 5px);
+        margin: 0 auto;
+      }
+
       /* Gifts */
       .gifts-grid {
         grid-template-columns: 1fr 1fr;
@@ -1199,7 +1205,7 @@
     <img src="images/roses.webp" class="rose-deco hero-rose-left" alt="" aria-hidden="true">
     <img src="images/roses.webp" class="rose-deco hero-rose-right" alt="" aria-hidden="true">
     <div class="hero-photo-frame">
-      <img src="images/1.JPG" alt="Daña Rose" class="hero-photo" decoding="async">
+      <img src="images/third.webp" alt="Daña Rose" class="hero-photo" decoding="async">
       <img src="images/roses4.webp" class="hero-frame-rose" alt="" aria-hidden="true">
     </div>
     <div class="cross-icon">&#10013;</div>
@@ -1307,15 +1313,15 @@
       <p>Precious moments</p>
     </div>
     <div class="gallery-grid">
-      <img src="images/OM6A8531.JPG" alt="Daña Rose" loading="lazy">
-      <img src="images/OM6A8600.JPG" alt="Daña Rose" loading="lazy">
-      <img src="images/OM6A8707.JPG" alt="Daña Rose" loading="lazy">
-      <img src="images/OM6A8732.JPG" alt="Daña Rose" loading="lazy">
+      <img src="images/first.webp" alt="Daña Rose" loading="lazy" style="object-position: top;">
+      <img src="images/second.webp" alt="Daña Rose" loading="lazy">
       <img src="images/1.JPG" alt="Daña Rose" loading="lazy">
-      <img src="images/de00a768-f208-4165-b5a2-7c2c192266a6.jpg" alt="Daña Rose" loading="lazy">
-      <img src="images/b412ceda-cbf2-4d21-bc01-f7be21919fad.jpg" alt="Daña Rose" loading="lazy">
-      <img src="images/949d6d03-319b-4c0e-981e-9537036d38df.jpg" alt="Daña Rose" loading="lazy">
-      <img src="images/c7c9990d-a681-4683-ba96-a5701b32cc94.jpg" alt="Daña Rose" loading="lazy">
+      <img src="images/fourth.webp" alt="Daña Rose" loading="lazy">
+      <img src="images/fifth.webp" alt="Daña Rose" loading="lazy" style="object-position: top;">
+      <img src="images/sixth.webp" alt="Daña Rose" loading="lazy">
+      <img src="images/seventh.webp" alt="Daña Rose" loading="lazy" style="object-position: top;">
+      <img src="images/eight.webp" alt="Daña Rose" loading="lazy">
+      <img src="images/ninth.jpg" alt="Daña Rose" loading="lazy" class="gallery-last">
     </div>
   </section>
 
@@ -1407,6 +1413,7 @@
         <span class="godparent-name">Tito Stephen Pe&ntilde;a</span>
         <span class="godparent-name">Tito JM Cruspero</span>
         <span class="godparent-name">Tito Darryl Dan Atanoso</span>
+        <span class="godparent-name">Tito Edison Cadungog</span>
       </div>
     </div>
 
@@ -1450,15 +1457,9 @@
           <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
         </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Your phone number">
-          </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Your phone number">
         </div>
 
         <div class="form-group">

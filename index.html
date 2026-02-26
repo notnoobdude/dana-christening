@@ -186,15 +186,25 @@
       z-index: 1;
     }
 
-    .hero-photo {
+    .hero-photo-circle {
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      object-fit: cover;
+      overflow: hidden;
       border: 4px solid var(--white);
       box-shadow: 0 10px 30px rgba(196, 120, 138, 0.3);
       position: relative;
       z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 35% 30%;
+      transform: scale(1.6);
+      transform-origin: 35% 30%;
     }
 
     .hero-frame-rose {
@@ -1036,7 +1046,7 @@
         padding: 90px 20px 60px;
       }
 
-      .hero-photo {
+      .hero-photo-circle {
         width: 140px;
         height: 140px;
       }
@@ -1109,6 +1119,7 @@
         grid-column: 1 / -1;
         width: calc(50% - 5px);
         margin: 0 auto;
+        object-position: top center;
       }
 
       /* Gifts */
@@ -1205,7 +1216,9 @@
     <img src="images/roses.webp" class="rose-deco hero-rose-left" alt="" aria-hidden="true">
     <img src="images/roses.webp" class="rose-deco hero-rose-right" alt="" aria-hidden="true">
     <div class="hero-photo-frame">
-      <img src="images/third.webp" alt="Daña Rose" class="hero-photo" decoding="async">
+      <div class="hero-photo-circle">
+        <img src="images/third.webp" alt="Daña Rose" class="hero-photo" decoding="async">
+      </div>
       <img src="images/roses4.webp" class="hero-frame-rose" alt="" aria-hidden="true">
     </div>
     <div class="cross-icon">&#10013;</div>
@@ -1313,13 +1326,13 @@
       <p>Precious moments</p>
     </div>
     <div class="gallery-grid">
-      <img src="images/first.webp" alt="Daña Rose" loading="lazy" style="object-position: top;">
+      <img src="images/first.jpg" alt="Daña Rose" loading="lazy">
       <img src="images/second.webp" alt="Daña Rose" loading="lazy">
       <img src="images/1.JPG" alt="Daña Rose" loading="lazy">
       <img src="images/fourth.webp" alt="Daña Rose" loading="lazy">
       <img src="images/fifth.webp" alt="Daña Rose" loading="lazy" style="object-position: top;">
       <img src="images/sixth.webp" alt="Daña Rose" loading="lazy">
-      <img src="images/seventh.webp" alt="Daña Rose" loading="lazy" style="object-position: top;">
+      <img src="images/seventh.webp" alt="Daña Rose" loading="lazy">
       <img src="images/eight.webp" alt="Daña Rose" loading="lazy">
       <img src="images/ninth.jpg" alt="Daña Rose" loading="lazy" class="gallery-last">
     </div>

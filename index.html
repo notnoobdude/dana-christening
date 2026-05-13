@@ -966,6 +966,229 @@
       transform: scaleX(-1);
     }
 
+    /* Event Gallery nav link */
+    .nav-gallery-link {
+      color: var(--pink-dark) !important;
+      font-weight: 500 !important;
+      border: 1.5px solid var(--pink-light);
+      border-radius: 50px;
+      padding: 4px 14px !important;
+      transition: background 0.2s, color 0.2s, border-color 0.2s !important;
+    }
+
+    .nav-gallery-link:hover {
+      background: var(--pink-light);
+      border-color: var(--pink);
+      color: var(--white) !important;
+    }
+
+    /* Event Gallery hero button */
+    .hero-gallery-btn {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 13px 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--pink-dark);
+      background: var(--white);
+      border: 1.5px solid var(--pink-light);
+      border-radius: 50px;
+      text-decoration: none;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .hero-gallery-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(196, 120, 138, 0.25);
+      background: var(--pink-pale);
+    }
+
+    /* Welcome Modal */
+    .welcome-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(253, 240, 244, 0.88);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .welcome-modal-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .welcome-modal-card {
+      background: var(--white);
+      border: 1px solid var(--pink-light);
+      border-radius: 28px;
+      padding: 50px 42px 42px;
+      text-align: center;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 24px 70px rgba(196, 120, 138, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .welcome-modal-deco {
+      position: absolute;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      opacity: 0.82;
+    }
+
+    .welcome-modal-deco-tl {
+      width: 120px;
+      top: -18px;
+      left: -18px;
+    }
+
+    .welcome-modal-deco-br {
+      width: 120px;
+      bottom: -18px;
+      right: -18px;
+      transform: scaleX(-1) rotate(180deg);
+    }
+
+    .welcome-modal-cross {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-modal-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-modal-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: var(--pink-dark);
+      line-height: 1.2;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-modal-date {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-modal-celebrated {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--pink-dark);
+      background: var(--pink-pale);
+      border: 1px solid var(--pink-light);
+      border-radius: 50px;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-modal-question {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 26px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-modal-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .modal-btn {
+      display: block;
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      text-decoration: none;
+      border: none;
+      text-align: center;
+    }
+
+    .modal-btn-primary {
+      background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(196, 120, 138, 0.38);
+    }
+
+    .modal-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(196, 120, 138, 0.5);
+    }
+
+    .modal-btn-secondary {
+      background: transparent;
+      color: var(--pink-dark);
+      border: 1.5px solid var(--pink-light);
+    }
+
+    .modal-btn-secondary:hover {
+      background: var(--pink-pale);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(196, 120, 138, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .welcome-modal-card {
+        padding: 40px 28px 34px;
+      }
+
+      .welcome-modal-name {
+        font-size: 2.4rem;
+      }
+    }
+
     /* Music Toggle Button */
     #music-btn {
       position: fixed;
@@ -1215,6 +1438,31 @@
 </head>
 <body>
 
+  <!-- Welcome Modal -->
+  <div id="welcome-modal" class="welcome-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="welcome-modal-card">
+      <img src="images/roses.webp" class="welcome-modal-deco welcome-modal-deco-tl" alt="" aria-hidden="true">
+      <img src="images/roses.webp" class="welcome-modal-deco welcome-modal-deco-br" alt="" aria-hidden="true">
+      <div class="welcome-modal-cross">&#10013;</div>
+      <p class="welcome-modal-eyebrow">Welcome, Dear Guest</p>
+      <h2 class="welcome-modal-name" id="modal-title">Da&#241;a Rose</h2>
+      <p class="welcome-modal-date">The Holy Baptism &bull; April 11, 2026</p>
+      <div class="welcome-modal-celebrated">
+        <span>&#x2728;</span> This blessed day has been celebrated <span>&#x2728;</span>
+      </div>
+      <div class="rose-divider" style="justify-content: center; margin: 0 0 20px;">
+        <span class="line"></span>
+        <span class="rose">&#x1F339;</span>
+        <span class="line"></span>
+      </div>
+      <p class="welcome-modal-question">Relive the memories or browse the site.</p>
+      <div class="welcome-modal-btns">
+        <button id="modal-enter-site" class="modal-btn modal-btn-primary">Continue to the Site</button>
+        <a href="/event-gallery" class="modal-btn modal-btn-secondary">View Event Gallery</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Floating Petals -->
   <div id="petals-container"></div>
 
@@ -1231,6 +1479,7 @@
       <li><a href="#rsvp">RSVP</a></li>
       <li><a href="#gifts">Gift Ideas</a></li>
       <li><a href="#safety">Safety</a></li>
+      <li><a href="/event-gallery" class="nav-gallery-link">Event Gallery</a></li>
     </ul>
   </nav>
 
@@ -1279,6 +1528,7 @@
         <span class="label">Seconds</span>
       </div>
     </div>
+    <a href="/event-gallery" class="hero-gallery-btn">&#x1F4F7; View Event Gallery</a>
     <a href="#details" class="scroll-hint">&#8964;</a>
   </section>
 
@@ -1389,6 +1639,7 @@
         <span class="godparent-name">Tito JM Cruspero</span>
         <span class="godparent-name">Tito Darryl Dan Atanoso</span>
         <span class="godparent-name">Tito Edison Cadungog</span>
+        <span class="godparent-name">Tito Neil Oscar Hawan</span>
       </div>
     </div>
 
@@ -1682,12 +1933,14 @@
     // Smooth scroll for nav links + close menu on mobile
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href.startsWith('#')) return; // let external links navigate normally
         e.preventDefault();
         // Close hamburger menu
         document.getElementById('nav-menu').classList.remove('open');
         document.getElementById('nav-toggle').setAttribute('aria-expanded', 'false');
         document.getElementById('nav-toggle').textContent = '☰';
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
           target.scrollIntoView({ behavior: 'smooth' });
         }
@@ -1701,6 +1954,25 @@
       this.setAttribute('aria-expanded', open);
       this.textContent = open ? '✕' : '☰';
     });
+
+    // Welcome modal
+    (function () {
+      const overlay = document.getElementById('welcome-modal');
+
+      if (sessionStorage.getItem('modal-seen')) {
+        overlay.classList.add('hidden');
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+
+      function dismissModal() {
+        sessionStorage.setItem('modal-seen', '1');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('modal-enter-site').addEventListener('click', dismissModal);
+    })();
   </script>
 </body>
 </html>

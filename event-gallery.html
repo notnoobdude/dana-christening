@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Gallery — Christening of Daña Rose</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink-dark: #c4788a;
+      --pink: #e8a0b4;
+      --pink-light: #f5d0dc;
+      --pink-pale: #fdf0f4;
+      --white: #ffffff;
+      --cream: #fefbf9;
+      --text: #5a3d47;
+      --text-light: #8a6b75;
+      --gold: #c9a96e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* Floating rose petals */
+    .petal {
+      position: fixed;
+      background: var(--pink-light);
+      border-radius: 50% 0 50% 50%;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      animation: fall linear infinite;
+    }
+
+    .petal:nth-child(odd)  { background: var(--pink); }
+    .petal:nth-child(3n)   { background: rgba(255,255,255,0.7); }
+
+    @keyframes fall {
+      0%   { opacity: 0; transform: translateX(0) rotate(0deg) scale(0.5); }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.4; }
+      100% { opacity: 0; transform: translateX(150px) rotate(720deg) scale(0.2); top: 100vh; }
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(254, 251, 249, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(232, 160, 180, 0.2);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-back {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .header-back:hover { color: var(--pink-dark); }
+
+    .header-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      color: var(--pink-dark);
+      text-align: center;
+      flex: 1;
+    }
+
+    .header-spacer {
+      /* mirrors .header-back width so title stays centered */
+      width: 100px;
+    }
+
+    /* Hero band */
+    .gallery-hero {
+      background: linear-gradient(180deg, var(--pink-pale) 0%, var(--cream) 100%);
+      text-align: center;
+      padding: 70px 20px 50px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rose-deco {
+      position: absolute;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+
+    .hero-rose-left  { width: 220px; bottom: 0; left: -20px; opacity: 0.82; }
+    .hero-rose-right { width: 220px; bottom: 0; right: -20px; opacity: 0.82; transform: scaleX(-1); }
+
+    .gallery-hero .cross {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .gallery-hero h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.6rem, 7vw, 4.5rem);
+      color: var(--pink-dark);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .gallery-hero .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    .gallery-hero .date {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .rose-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 22px 0 0;
+    }
+
+    .rose-divider .line {
+      width: 70px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--pink), transparent);
+    }
+
+    .rose-divider .rose { font-size: 1.3rem; color: var(--pink); }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 36px 20px 0;
+    }
+
+    .filter-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 50px;
+      border: 1.5px solid var(--pink-light);
+      background: transparent;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+      border-color: transparent;
+      color: var(--white);
+    }
+
+    /* Coming-soon banner */
+    .coming-soon-band {
+      text-align: center;
+      margin: 36px 20px 0;
+    }
+
+    .coming-soon-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--pink-dark);
+      background: var(--pink-pale);
+      border: 1px solid var(--pink-light);
+      border-radius: 50px;
+      padding: 8px 20px;
+    }
+
+    /* Gallery grid */
+    .gallery-section {
+      padding: 32px 20px 80px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    /* Placeholder card */
+    .photo-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid var(--white);
+      box-shadow: 0 4px 16px rgba(196, 120, 138, 0.13);
+      background: var(--white);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(196, 120, 138, 0.25);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--pink-pale) 0%, var(--pink-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse at 75% 70%, rgba(196,120,138,0.12) 0%, transparent 55%);
+    }
+
+    .photo-placeholder .ph-icon {
+      font-size: 2.4rem;
+      opacity: 0.45;
+      position: relative;
+      z-index: 1;
+    }
+
+    .photo-placeholder .ph-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--pink-dark);
+      opacity: 0.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Tall card variant */
+    .photo-card.tall .photo-placeholder { aspect-ratio: 3 / 4; }
+
+    /* Card caption */
+    .photo-caption {
+      padding: 12px 16px 14px;
+    }
+
+    .photo-caption .cap-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--pink-dark);
+      margin-bottom: 4px;
+    }
+
+    .photo-caption .cap-title {
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    /* Upload CTA */
+    .upload-cta {
+      text-align: center;
+      margin-top: 56px;
+      padding: 48px 28px;
+      background: var(--white);
+      border: 1px solid var(--pink-light);
+      border-radius: 24px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .upload-cta .cta-icon { font-size: 2.8rem; margin-bottom: 14px; }
+
+    .upload-cta h3 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: var(--pink-dark);
+      margin-bottom: 10px;
+    }
+
+    .upload-cta p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+      color: var(--white);
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(196, 120, 138, 0.35);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(196, 120, 138, 0.5);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 36px 20px;
+      background: var(--pink-pale);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-rose-left  { width: 110px; bottom: 0; left: 0;  opacity: 0.8; mix-blend-mode: multiply; }
+    .footer-rose-right { width: 110px; bottom: 0; right: 0; opacity: 0.8; mix-blend-mode: multiply; transform: scaleX(-1); }
+
+    footer p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      color: var(--text-light);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer .footer-rose-emoji {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Music button */
+    #music-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(196, 120, 138, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      color: var(--white);
+      font-size: 1.3rem;
+    }
+
+    #music-btn:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(196, 120, 138, 0.55); }
+    #music-btn.muted { background: linear-gradient(135deg, #ccc 0%, #aaa 100%); box-shadow: 0 4px 18px rgba(0,0,0,0.15); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-spacer { display: none; }
+
+      .header-title { text-align: right; font-size: 1.5rem; }
+
+      .gallery-hero { padding: 56px 20px 40px; }
+
+      .hero-rose-left, .hero-rose-right { width: 130px; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .photo-card.tall .photo-placeholder { aspect-ratio: 4 / 3; }
+
+      #music-btn { bottom: 18px; right: 18px; width: 44px; height: 44px; font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="petals-container"></div>
+
+  <!-- Header -->
+  <header>
+    <a href="/" class="header-back">&#8592; Back to Site</a>
+    <span class="header-title">Event Gallery</span>
+    <span class="header-spacer"></span>
+  </header>
+
+  <!-- Hero band -->
+  <div class="gallery-hero">
+    <img src="images/roses.webp" class="rose-deco hero-rose-left" alt="" aria-hidden="true">
+    <img src="images/roses.webp" class="rose-deco hero-rose-right" alt="" aria-hidden="true">
+    <p class="eyebrow">Captured Memories</p>
+    <div class="cross">&#10013;</div>
+    <h1>Da&#241;a Rose</h1>
+    <p class="date">The Holy Baptism &bull; April 11, 2026</p>
+    <div class="rose-divider">
+      <span class="line"></span>
+      <span class="rose">&#x1F339;</span>
+      <span class="line"></span>
+    </div>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="filter-bar">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">Church</button>
+    <button class="filter-btn">Reception</button>
+    <button class="filter-btn">Highlights</button>
+    <button class="filter-btn">Godparents</button>
+    <button class="filter-btn">Anya</button>
+  </div>
+
+  <!-- Coming-soon notice -->
+  <div class="coming-soon-band">
+    <span class="coming-soon-pill">&#x2728;&ensp;Photos coming soon — check back after the celebration&ensp;&#x2728;</span>
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery-section">
+    <div class="gallery-grid">
+
+      <div class="photo-card tall">
+        <div class="photo-placeholder">
+          <span class="ph-icon">&#x1F4F7;</span>
+          <span class="ph-label">Church Ceremony</span>
+        </div>
+        <div class="photo-caption">
+          <p class="cap-tag">Church</p>
+          <p class="cap-title">Baptismal Rites</p>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder">
+          <span class="ph-icon">&#x1F4F7;</span>
+          <span class="ph-label">Coming Soon</span>
+        </div>
+        <div class="photo-caption">
+          <p class="cap-tag">Church</p>
+          <p class="cap-title">Holy Mass</p>
+        </div>
+      </div>
+
+      <div class="photo-card tall">
+        <div class="photo-placeholder">
+          <span class="ph-icon">&#x1F4F7;</span>
+          <span class="ph-label">Coming Soon</span>
+        </div>
+        <div class="photo-caption">
+          <p class="cap-tag">Reception</p>
+          <p class="cap-title">PBB FarmHouse</p>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder">
+          <span class="ph-icon">&#x1F4F7;</span>
+          <span class="ph-label">Coming Soon</span>
+        </div>
+        <div class="photo-caption">
+          <p class="cap-tag">Godparents</p>
+          <p class="cap-title">Ninongs &amp; Ninangs</p>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder">
+          <span class="ph-icon">&#x1F4F7;</span>
+          <span class="ph-label">Coming Soon</span>
+        </div>
+        <div class="photo-caption">
+          <p class="cap-tag">Reception</p>
+          <p class="cap-title">Lunch &amp; Celebration</p>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder">
+          <span class="ph-icon">&#x1F4F7;</span>
+          <span class="ph-label">Coming Soon</span>
+        </div>
+        <div class="photo-caption">
+          <p class="cap-tag">Highlights</p>
+          <p class="cap-title">With the Little One</p>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder">
+          <span class="ph-icon">&#x1F4F7;</span>
+          <span class="ph-label">Coming Soon</span>
+        </div>
+        <div class="photo-caption">
+          <p class="cap-tag">Reception</p>
+          <p class="cap-title">Guests &amp; Well-wishers</p>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-placeholder">
+          <span class="ph-icon">&#x1F4F7;</span>
+          <span class="ph-label">Coming Soon</span>
+        </div>
+        <div class="photo-caption">
+          <p class="cap-tag">Church</p>
+          <p class="cap-title">Blessing Moment</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Upload CTA -->
+    <div class="upload-cta">
+      <div class="cta-icon">&#x1F339;</div>
+      <h3>Share Your Photos</h3>
+      <p>Were you there to witness this blessed day? We'd love to collect your captured memories of Da&#241;a Rose's christening.</p>
+      <a href="mailto:rhistineee@gmail.com?cc=timpaxerror@gmail.com&subject=Event%20Gallery%20Photos%20%E2%80%94%20Da%C3%B1a%20Rose%20Christening" class="cta-btn">Send Your Photos</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <img src="images/roses3.webp" class="rose-deco footer-rose-left" alt="" aria-hidden="true">
+    <img src="images/roses3.webp" class="rose-deco footer-rose-right" alt="" aria-hidden="true">
+    <div class="footer-rose-emoji">&#x1F339;</div>
+    <p>The Christening of Da&#241;a Rose &bull; April 11, 2026</p>
+  </footer>
+
+  <!-- Background Music -->
+  <audio id="bg-music" preload="auto">
+    <source src="music/favoritesongnianya.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="music-btn" title="Toggle music" aria-label="Toggle background music">&#9834;</button>
+
+  <script>
+    // Petals
+    (function () {
+      const container = document.getElementById('petals-container');
+      for (let i = 0; i < 35; i++) {
+        const p = document.createElement('div');
+        p.classList.add('petal');
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.top = -20 + 'px';
+        p.style.animationDuration = (Math.random() * 8 + 8) + 's';
+        p.style.animationDelay = (Math.random() * 15) + 's';
+        p.style.width = (Math.random() * 20 + 12) + 'px';
+        p.style.height = (Math.random() * 20 + 12) + 'px';
+        container.appendChild(p);
+      }
+    })();
+
+    // Music
+    (function () {
+      const audio = document.getElementById('bg-music');
+      const btn   = document.getElementById('music-btn');
+      const START = 33;
+
+      function startMusic() {
+        audio.currentTime = START;
+        audio.play().catch(() => {});
+      }
+
+      audio.addEventListener('ended', function () {
+        audio.currentTime = START;
+        audio.play().catch(() => {});
+      });
+
+      audio.addEventListener('canplay', function onReady() {
+        audio.removeEventListener('canplay', onReady);
+        startMusic();
+      });
+
+      function onFirstInteraction() {
+        startMusic();
+        document.removeEventListener('click', onFirstInteraction);
+        document.removeEventListener('touchstart', onFirstInteraction);
+      }
+      document.addEventListener('click', onFirstInteraction);
+      document.addEventListener('touchstart', onFirstInteraction);
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        audio.muted = !audio.muted;
+        btn.classList.toggle('muted', audio.muted);
+        btn.title = audio.muted ? 'Unmute music' : 'Mute music';
+      });
+    })();
+
+    // Filter buttons (UI only — ready for real filtering when photos are added)
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
